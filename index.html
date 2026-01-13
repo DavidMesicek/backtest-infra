@@ -122,6 +122,23 @@ h1 {
 .entry-field-description .entry-value {
   flex: 1;
 }
+.visitor-counter-label {
+  text-align: center;
+  margin: 20px 0 10px 0;
+  color: #999;
+  font-size: 0.85em;
+  text-transform: uppercase;
+}
+.visitor-counter {
+  text-align: center;
+  margin: 0 auto 20px auto;
+  padding: 10px;
+  color: #e0e0e0;
+  font-size: 1.2em;
+  border: 1px solid #333;
+  background: rgba(255, 255, 255, 0.05);
+  max-width: 200px;
+}
 footer {
   margin-top: 60px;
   padding-top: 20px;
@@ -131,7 +148,6 @@ footer {
 </style>
 </head>
 <body>
-<div id="gc-visitors"></div>
 <h1>Backtest Registry</h1>
 
 <div class="entry">
@@ -218,6 +234,9 @@ footer {
 <div class="entry-field"><span class="entry-label">Status:</span> <span class="entry-value">pending 🟡</span></div>
 </div>
 </div>
+
+<div class="visitor-counter-label">NUMBER OF VISITS</div>
+<div class="visitor-counter" id="gc-visitors"></div>
 
 <footer>
 Registry snapshot. Last updated 2026.
