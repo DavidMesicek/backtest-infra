@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Backtest Registry</title>
+<style>
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 20px;
+  color: #333;
+}
+h1 {
+  font-weight: 400;
+  font-size: 1.5em;
+  margin-bottom: 30px;
+}
+h2 {
+  font-weight: 400;
+  font-size: 1.2em;
+  margin-top: 40px;
+  margin-bottom: 15px;
+}
+.preview {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin-top: 30px;
+  background: #f9f9f9;
+}
+.preview h2 {
+  margin-top: 0;
+  color: #666;
+  font-size: 1em;
+}
+.entry {
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #ddd;
+}
+.entry:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.name {
+  font-weight: 500;
+}
+.status {
+  color: #666;
+  font-size: 0.9em;
+  margin-top: 5px;
+}
+.status.active {
+  color: #006400;
+}
+.status.inactive {
+  color: #666;
+}
+</style>
+</head>
+<body>
+<h1>Backtest Registry</h1>
+
+<p>Registry of backtest infrastructure components.</p>
+
+<div class="preview">
+<h2>Preview (example state)</h2>
+<p style="color: #666; font-size: 0.9em; margin-bottom: 20px;">Non-authoritative example entries.</p>
+
+<div class="entry">
+<div class="name">Example Backtest Engine A</div>
+<div class="status active">Status: active</div>
+</div>
+
+<div class="entry">
+<div class="name">Example Backtest Engine B</div>
+<div class="status active">Status: active</div>
+</div>
+
+<div class="entry">
+<div class="name">Example Backtest Engine C</div>
+<div class="status inactive">Status: inactive</div>
+</div>
+</div>
+
+</body>
+</html>
