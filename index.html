@@ -131,6 +131,7 @@ footer {
 </style>
 </head>
 <body>
+<div id="gc-visitors"></div>
 <h1>Backtest Registry</h1>
 
 <div class="entry">
@@ -223,6 +224,23 @@ Registry snapshot. Last updated 2026.
 </footer>
 
 <img src="https://backtest-infra.site/pixel?site=backtest-infra" alt="" width="1" height="1" style="position: absolute; opacity: 0; pointer-events: none;">
+
+<script data-goatcounter="https://davidmesicek.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+<script>
+(function() {
+  var pollInterval = setInterval(function() {
+    if (window.goatcounter && window.goatcounter.visit_count) {
+      clearInterval(pollInterval);
+      window.goatcounter.visit_count({
+        append: '#gc-visitors',
+        type: 'html',
+        no_branding: true,
+        style: 'color: #999; font-size: 0.85em;'
+      });
+    }
+  }, 100);
+})();
+</script>
 
 </body>
 </html>
