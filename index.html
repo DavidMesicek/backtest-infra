@@ -11,7 +11,22 @@ body {
   max-width: 800px;
   margin: 40px auto;
   padding: 0 20px;
-  color: #333;
+  color: #fff;
+  background-image: url('background.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: -1;
 }
 h1 {
   font-weight: 400;
@@ -25,20 +40,20 @@ h2 {
   margin-bottom: 15px;
 }
 .preview {
-  border: 1px solid #ccc;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   padding: 20px;
   margin-top: 30px;
-  background: #f9f9f9;
+  background: rgba(255, 255, 255, 0.1);
 }
 .preview h2 {
   margin-top: 0;
-  color: #666;
+  color: rgba(255, 255, 255, 0.8);
   font-size: 1em;
 }
 .entry {
   margin-bottom: 15px;
   padding-bottom: 15px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 .entry:last-child {
   border-bottom: none;
@@ -49,15 +64,15 @@ h2 {
   font-weight: 500;
 }
 .status {
-  color: #666;
+  color: rgba(255, 255, 255, 0.7);
   font-size: 0.9em;
   margin-top: 5px;
 }
 .status.active {
-  color: #006400;
+  color: #90ee90;
 }
 .status.inactive {
-  color: #666;
+  color: rgba(255, 255, 255, 0.5);
 }
 </style>
 </head>
@@ -68,7 +83,7 @@ h2 {
 
 <div class="preview">
 <h2>Preview (example state)</h2>
-<p style="color: #666; font-size: 0.9em; margin-bottom: 20px;">Non-authoritative example entries.</p>
+<p style="color: rgba(255, 255, 255, 0.6); font-size: 0.9em; margin-bottom: 20px;">Non-authoritative example entries.</p>
 
 <div class="entry">
 <div class="name">Example Backtest Engine A</div>
