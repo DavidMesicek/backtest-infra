@@ -5,18 +5,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Backtest Registry</title>
 <style>
-body {
-  font-family: system-ui, -apple-system, sans-serif;
-  line-height: 1.6;
-  max-width: 800px;
-  margin: 40px auto;
-  padding: 0 20px;
-  color: #fff;
-  background-image: url('background.png');
+html {
+  background-image: url('backround.png');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   background-repeat: no-repeat;
+  min-height: 100%;
+}
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+  color: #e0e0e0;
+  position: relative;
+  min-height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
 }
 body::before {
   content: '';
@@ -25,81 +31,219 @@ body::before {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.3);
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.3) 100%);
   z-index: -1;
+  pointer-events: none;
 }
 h1 {
   font-weight: 400;
-  font-size: 1.5em;
-  margin-bottom: 30px;
-}
-h2 {
-  font-weight: 400;
-  font-size: 1.2em;
-  margin-top: 40px;
-  margin-bottom: 15px;
-}
-.preview {
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  padding: 20px;
-  margin-top: 30px;
-  background: rgba(255, 255, 255, 0.1);
-}
-.preview h2 {
-  margin-top: 0;
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 1em;
+  font-size: 1.3em;
+  margin-bottom: 40px;
+  color: #fff;
 }
 .entry {
-  margin-bottom: 15px;
-  padding-bottom: 15px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  margin-bottom: 50px;
+  padding-bottom: 50px;
+  border-bottom: 1px solid #222;
 }
 .entry:last-child {
   border-bottom: none;
   margin-bottom: 0;
   padding-bottom: 0;
 }
-.name {
-  font-weight: 500;
+.entry-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
 }
-.status {
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 0.9em;
-  margin-top: 5px;
+.entry-logo {
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+  border: 1px solid #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.status.active {
-  color: #90ee90;
+.entry-logo img {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
 }
-.status.inactive {
-  color: rgba(255, 255, 255, 0.5);
+.entry-logo-placeholder {
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+  border: 1px solid #333;
+  background: #111;
+}
+.entry-title {
+  font-size: 1.2em;
+}
+.entry-title a {
+  color: #fff;
+  text-decoration: none;
+}
+.entry-title a:hover {
+  color: #fa4;
+}
+.entry-content {
+  margin-top: 15px;
+  color: #ccc;
+  line-height: 1.8;
+  font-size: 0.95em;
+}
+.entry-field {
+  margin-bottom: 8px;
+}
+.entry-label {
+  color: #999;
+  display: inline-block;
+  min-width: 120px;
+}
+.entry-value {
+  color: #e0e0e0;
+}
+.entry-value a {
+  color: #fa4;
+  text-decoration: none;
+}
+.entry-value a:hover {
+  text-decoration: underline;
+}
+.entry-field-description {
+  display: flex;
+  align-items: flex-start;
+}
+.entry-field-description .entry-label {
+  flex-shrink: 0;
+}
+.entry-field-description .entry-value {
+  flex: 1;
+}
+footer {
+  margin-top: 60px;
+  padding-top: 20px;
+  border-top: 1px solid #222;
+  font-size: 0.85em;
+  color: #666;
+}
+.visitor-counter-label {
+  text-align: center;
+  margin: 20px 0 10px 0;
+  color: #999;
+  font-size: 0.85em;
+  text-transform: uppercase;
+}
+.visitor-counter {
+  text-align: center;
+  margin: 0 auto 20px auto;
+  padding: 10px;
+  color: #e0e0e0;
+  font-size: 1.2em;
+  border: 1px solid #333;
+  background: rgba(255, 255, 255, 0.05);
+  max-width: 200px;
 }
 </style>
 </head>
 <body>
 <h1>Backtest Registry</h1>
 
-<p>Registry of backtest infrastructure components.</p>
-
-<div class="preview">
-<h2>Preview (example state)</h2>
-<p style="color: rgba(255, 255, 255, 0.6); font-size: 0.9em; margin-bottom: 20px;">Non-authoritative example entries.</p>
+<div class="entry">
+<div class="entry-header">
+<div class="entry-logo"><a href="https://www.quantconnect.com/"><img src="QuantConnect.png" alt="QuantConnect"></a></div>
+<div class="entry-title"><a href="https://www.quantconnect.com/">QuantConnect</a></div>
+</div>
+<div class="entry-content">
+<div class="entry-field"><span class="entry-label">Name:</span> <span class="entry-value"><a href="https://www.quantconnect.com/">QuantConnect</a></span></div>
+<div class="entry-field"><span class="entry-label">Link:</span> <span class="entry-value"><a href="https://www.quantconnect.com/">https://www.quantconnect.com/</a></span></div>
+<div class="entry-field"><span class="entry-label">Type:</span> <span class="entry-value">algorithmic trading platform</span></div>
+<div class="entry-field"><span class="entry-label">Domain:</span> <span class="entry-value">backtesting, live trading</span></div>
+<div class="entry-field"><span class="entry-label">Primary use:</span> <span class="entry-value">quantitative research and execution</span></div>
+<div class="entry-field"><span class="entry-label">Known for:</span> <span class="entry-value">LEAN open-source engine, multi-asset support, cloud-based backtesting</span></div>
+<div class="entry-field entry-field-description"><span class="entry-label">Description:</span> <span class="entry-value">Cloud-based platform for quantitative research, backtesting, and live trading. Includes access to financial data, alternative datasets, and supports equities, options, futures, forex, and cryptocurrencies. Uses open-source LEAN engine for strategy development and execution.</span></div>
+<div class="entry-field"><span class="entry-label">Status:</span> <span class="entry-value">pending 🟡</span></div>
+</div>
+</div>
 
 <div class="entry">
-<div class="name">Example Backtest Engine A</div>
-<div class="status active">Status: active</div>
+<div class="entry-header">
+<div class="entry-logo"><a href="https://vectorbt.dev/"><img src="vectorbt.png" alt="vectorbt"></a></div>
+<div class="entry-title"><a href="https://vectorbt.dev/">vectorbt</a></div>
+</div>
+<div class="entry-content">
+<div class="entry-field"><span class="entry-label">Name:</span> <span class="entry-value"><a href="https://vectorbt.dev/">vectorbt</a></span></div>
+<div class="entry-field"><span class="entry-label">Link:</span> <span class="entry-value"><a href="https://vectorbt.dev/">https://vectorbt.dev/</a></span></div>
+<div class="entry-field"><span class="entry-label">Type:</span> <span class="entry-value">Python backtesting library</span></div>
+<div class="entry-field"><span class="entry-label">Domain:</span> <span class="entry-value">backtesting, portfolio analysis</span></div>
+<div class="entry-field"><span class="entry-label">Primary use:</span> <span class="entry-value">vectorized backtesting and portfolio optimization</span></div>
+<div class="entry-field"><span class="entry-label">Known for:</span> <span class="entry-value">NumPy-based vectorization, fast computation, interactive visualizations</span></div>
+<div class="entry-field entry-field-description"><span class="entry-label">Description:</span> <span class="entry-value">Python library for backtesting and analyzing trading strategies. Uses NumPy vectorization for computation. Includes features for portfolio optimization, parameter scanning, and performance metrics. Provides visualization tools for strategy analysis.</span></div>
+<div class="entry-field"><span class="entry-label">Status:</span> <span class="entry-value">pending 🟡</span></div>
+</div>
 </div>
 
 <div class="entry">
-<div class="name">Example Backtest Engine B</div>
-<div class="status active">Status: active</div>
+<div class="entry-header">
+<div class="entry-logo"><a href="https://www.nautilustrader.io/"><img src="Nautilus Trader.png" alt="Nautilus Trader"></a></div>
+<div class="entry-title"><a href="https://www.nautilustrader.io/">Nautilus Trader</a></div>
+</div>
+<div class="entry-content">
+<div class="entry-field"><span class="entry-label">Name:</span> <span class="entry-value"><a href="https://www.nautilustrader.io/">Nautilus Trader</a></span></div>
+<div class="entry-field"><span class="entry-label">Link:</span> <span class="entry-value"><a href="https://www.nautilustrader.io/">https://www.nautilustrader.io/</a></span></div>
+<div class="entry-field"><span class="entry-label">Type:</span> <span class="entry-value">high-performance trading framework</span></div>
+<div class="entry-field"><span class="entry-label">Domain:</span> <span class="entry-value">backtesting, live trading, algorithmic execution</span></div>
+<div class="entry-field"><span class="entry-label">Primary use:</span> <span class="entry-value">institutional-grade trading system development</span></div>
+<div class="entry-field"><span class="entry-label">Known for:</span> <span class="entry-value">Cython performance, event-driven architecture, multi-asset support</span></div>
+<div class="entry-field entry-field-description"><span class="entry-label">Description:</span> <span class="entry-value">Python trading framework with Cython components. Uses event-driven architecture for backtesting and live trading. Supports multiple asset classes. Includes order management, risk management, and real-time market data processing features.</span></div>
+<div class="entry-field"><span class="entry-label">Status:</span> <span class="entry-value">pending 🟡</span></div>
+</div>
 </div>
 
 <div class="entry">
-<div class="name">Example Backtest Engine C</div>
-<div class="status inactive">Status: inactive</div>
+<div class="entry-header">
+<div class="entry-logo"><a href="https://www.backtrader.com/"><img src="Backtrader.png" alt="Backtrader"></a></div>
+<div class="entry-title"><a href="https://www.backtrader.com/">Backtrader</a></div>
+</div>
+<div class="entry-content">
+<div class="entry-field"><span class="entry-label">Name:</span> <span class="entry-value"><a href="https://www.backtrader.com/">Backtrader</a></span></div>
+<div class="entry-field"><span class="entry-label">Link:</span> <span class="entry-value"><a href="https://www.backtrader.com/">https://www.backtrader.com/</a></span></div>
+<div class="entry-field"><span class="entry-label">Type:</span> <span class="entry-value">Python backtesting library</span></div>
+<div class="entry-field"><span class="entry-label">Domain:</span> <span class="entry-value">backtesting, strategy development</span></div>
+<div class="entry-field"><span class="entry-label">Primary use:</span> <span class="entry-value">algorithmic trading strategy backtesting</span></div>
+<div class="entry-field"><span class="entry-label">Known for:</span> <span class="entry-value">flexible strategy framework, live trading support, indicator library</span></div>
+<div class="entry-field entry-field-description"><span class="entry-label">Description:</span> <span class="entry-value">Python backtesting library for trading strategies. Supports strategy development, testing, and deployment. Includes support for multiple data feeds, indicators, and brokers. Can be used for backtesting and live trading.</span></div>
+<div class="entry-field"><span class="entry-label">Status:</span> <span class="entry-value">pending 🟡</span></div>
 </div>
 </div>
+
+<div class="entry">
+<div class="entry-header">
+<div class="entry-logo"><a href="https://jesse.trade/"><img src="Jesse.ai.png" alt="Jesse.ai"></a></div>
+<div class="entry-title"><a href="https://jesse.trade/">Jesse.ai</a></div>
+</div>
+<div class="entry-content">
+<div class="entry-field"><span class="entry-label">Name:</span> <span class="entry-value"><a href="https://jesse.trade/">Jesse.ai</a></span></div>
+<div class="entry-field"><span class="entry-label">Link:</span> <span class="entry-value"><a href="https://jesse.trade/">https://jesse.trade/</a></span></div>
+<div class="entry-field"><span class="entry-label">Type:</span> <span class="entry-value">cryptocurrency trading framework</span></div>
+<div class="entry-field"><span class="entry-label">Domain:</span> <span class="entry-value">backtesting, live trading, crypto markets</span></div>
+<div class="entry-field"><span class="entry-label">Primary use:</span> <span class="entry-value">cryptocurrency strategy development and execution</span></div>
+<div class="entry-field"><span class="entry-label">Known for:</span> <span class="entry-value">crypto-focused features, paper trading, portfolio management</span></div>
+<div class="entry-field entry-field-description"><span class="entry-label">Description:</span> <span class="entry-value">Python trading framework for cryptocurrency markets. Includes backtesting, paper trading, and live trading capabilities. Features portfolio management, risk management, and supports multiple cryptocurrency exchanges.</span></div>
+<div class="entry-field"><span class="entry-label">Status:</span> <span class="entry-value">pending 🟡</span></div>
+</div>
+</div>
+
+<div class="visitor-counter-label">NUMBER OF VISITS</div>
+<div class="visitor-counter"><img src="https://counter.mojadomena.xyz/badge?site=backtest-infra" alt="0" style="display: inline-block;"></div>
+
+<footer>
+Registry snapshot. Last updated 2026.
+</footer>
+
+<img src="https://counter.mojadomena.xyz/pixel?site=backtest-infra" alt="" width="1" height="1" style="position: absolute; opacity: 0; pointer-events: none;">
 
 </body>
 </html>
