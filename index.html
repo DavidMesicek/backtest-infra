@@ -473,19 +473,11 @@ Registry snapshot. Last updated 2026.
 
 <script>
 (function() {
-  // Get or create start date from localStorage
-  var startDateKey = 'registry_countdown_start';
-  var startDateStr = localStorage.getItem(startDateKey);
-  var startDate;
-  
-  if (startDateStr) {
-    // Use existing start date
-    startDate = new Date(startDateStr);
-  } else {
-    // Create new start date and save it
-    startDate = new Date();
-    localStorage.setItem(startDateKey, startDate.toISOString());
-  }
+  // Fixed start date - same for all users
+  // Set this to the exact date/time when countdown should start
+  // Format: Year, Month (0-11), Day, Hour, Minute, Second
+  // January 15, 2026 at 00:00:00
+  var startDate = new Date(2026, 0, 15, 0, 0, 0);
   
   // Calculate end date (14 days from start date)
   var endDate = new Date(startDate);
