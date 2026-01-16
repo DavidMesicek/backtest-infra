@@ -159,9 +159,48 @@ footer {
   font-size: 0.85em;
   color: #666;
 }
+.registry-status {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid #333;
+  border-radius: 8px;
+  min-width: 200px;
+  z-index: 100;
+}
+.registry-status-title {
+  font-size: 1.8em;
+  font-weight: bold;
+  color: #fa4;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.registry-status-label {
+  font-size: 0.85em;
+  color: #999;
+  text-transform: uppercase;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  text-align: center;
+}
+.registry-status-timer {
+  font-size: 1.5em;
+  color: #4af;
+  font-weight: bold;
+  text-align: center;
+  font-family: 'Courier New', monospace;
+}
 </style>
 </head>
 <body>
+<div class="registry-status">
+  <div class="registry-status-title">Registry filled 0/20</div>
+  <div class="registry-status-label">time to fill</div>
+  <div class="registry-status-timer" id="countdown-timer">14:00:00:00</div>
+</div>
+
 <h1>Trading Backtest Registry</h1>
 
 <div class="membership-notice">
@@ -429,6 +468,43 @@ Registry snapshot. Last updated 2026.
       });
     }
   }, 100);
+})();
+</script>
+
+<script>
+(function() {
+  // Set end date to 14 days from now
+  var endDate = new Date();
+  endDate.setDate(endDate.getDate() + 14);
+  
+  function updateCountdown() {
+    var now = new Date();
+    var timeLeft = endDate - now;
+    
+    if (timeLeft <= 0) {
+      document.getElementById('countdown-timer').textContent = '00:00:00:00';
+      return;
+    }
+    
+    var days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+    
+    var daysStr = days.toString().padStart(2, '0');
+    var hoursStr = hours.toString().padStart(2, '0');
+    var minutesStr = minutes.toString().padStart(2, '0');
+    var secondsStr = seconds.toString().padStart(2, '0');
+    
+    document.getElementById('countdown-timer').textContent = 
+      daysStr + ':' + hoursStr + ':' + minutesStr + ':' + secondsStr;
+  }
+  
+  // Update immediately
+  updateCountdown();
+  
+  // Update every second
+  setInterval(updateCountdown, 1000);
 })();
 </script>
 
