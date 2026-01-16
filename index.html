@@ -473,8 +473,22 @@ Registry snapshot. Last updated 2026.
 
 <script>
 (function() {
-  // Set end date to 14 days from now
-  var endDate = new Date();
+  // Get or create start date from localStorage
+  var startDateKey = 'registry_countdown_start';
+  var startDateStr = localStorage.getItem(startDateKey);
+  var startDate;
+  
+  if (startDateStr) {
+    // Use existing start date
+    startDate = new Date(startDateStr);
+  } else {
+    // Create new start date and save it
+    startDate = new Date();
+    localStorage.setItem(startDateKey, startDate.toISOString());
+  }
+  
+  // Calculate end date (14 days from start date)
+  var endDate = new Date(startDate);
   endDate.setDate(endDate.getDate() + 14);
   
   function updateCountdown() {
