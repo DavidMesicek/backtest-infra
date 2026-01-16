@@ -168,6 +168,7 @@ footer {
   border: 1px solid #333;
   border-radius: 8px;
   min-width: 200px;
+  max-width: 300px;
   z-index: 100;
 }
 .registry-status-title {
@@ -192,6 +193,13 @@ footer {
   text-align: center;
   font-family: 'Courier New', monospace;
 }
+.registry-status-description {
+  margin-top: 20px;
+  font-size: 0.75em;
+  color: #999;
+  line-height: 1.5;
+  text-align: left;
+}
 </style>
 </head>
 <body>
@@ -199,6 +207,11 @@ footer {
   <div class="registry-status-title">Registry filled 0/20</div>
   <div class="registry-status-label">time to fill</div>
   <div class="registry-status-timer" id="countdown-timer">14:00:00:00</div>
+  <div class="registry-status-description">
+    This registry is a small, time-boxed experiment.<br><br>
+    Its purpose is to test whether narrowly scoped, clearly defined datasets help AI systems and LLM-based search surface these websites more frequently to users searching via AI interfaces.<br><br>
+    The registry is intentionally limited in size and duration. If it fills quickly, the niche is explored further. If not, the registry is retired.
+  </div>
 </div>
 
 <h1>Trading Backtest Registry</h1>
